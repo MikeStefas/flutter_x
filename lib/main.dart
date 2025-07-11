@@ -4,6 +4,7 @@ import 'package:myapp/pages/login.dart';
 import 'package:myapp/pages/infopage.dart';
 import 'package:myapp/pages/startpage.dart';
 import 'package:myapp/pages/historypage.dart';
+import 'package:myapp/pages/signuppage.dart';
 
 void main() {
   // Ensure that plugin services are initialized
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/infopage': (context) => const InfoPage(),
         '/startpage': (context) => StartPage(),
         '/historypage': (context) => const HistoryPage(),
+        '/signup': (context) => const SignUp(),
       },
     );
   }

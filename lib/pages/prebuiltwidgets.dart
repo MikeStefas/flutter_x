@@ -27,7 +27,7 @@ class LoginText extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'LoginForm in',
+            'Log In',
             style: TextStyle(fontSize: 27, color: Colors.lightBlueAccent),
           ),
         ],
@@ -36,92 +36,49 @@ class LoginText extends StatelessWidget {
   }
 }
 
-// LoginPage form
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class PasswordField extends StatelessWidget {
+  const PasswordField({super.key, required this.passwordController});
 
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  void greet() {
-    String username = usernameController.text;
-    String password = passwordController.text;
-    if (username.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            'Enter username and password!',
-            style: TextStyle(
-              color: Colors.black,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-          backgroundColor: Colors.lightBlueAccent,
-        ),
-      );
-      return;
-    } else {
-      Navigator.pushNamed(context, '/homepage');
-    }
-  }
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: TextField(
-            controller: usernameController,
-            decoration: const InputDecoration(
-              labelText: ' Username',
-              labelStyle: TextStyle(color: Colors.lightBlueAccent),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.lightBlueAccent),
-              ),
-            ),
-            style: const TextStyle(color: Colors.white),
-          ),
+    return TextField(
+      controller: passwordController,
+      decoration: const InputDecoration(
+        labelText: ' Password',
+        labelStyle: TextStyle(color: Colors.lightBlueAccent),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.lightBlueAccent),
         ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: TextField(
-            controller: passwordController,
-            decoration: const InputDecoration(
-              labelText: ' Password',
-              labelStyle: TextStyle(color: Colors.lightBlueAccent),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.lightBlueAccent),
-              ),
-            ),
-            style: const TextStyle(color: Colors.white),
-            obscureText: true,
-            onEditingComplete: () {
-              FocusScope.of(context).unfocus();
-              setState(() {});
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: FloatingActionButton(
-            onPressed: greet,
-            backgroundColor: Colors.lightBlueAccent,
-            child: const Icon(Icons.check, color: Colors.black, size: 30),
-          ),
-        ),
-      ],
+      ),
+      style: const TextStyle(color: Colors.white),
+      obscureText: true,
+      obscuringCharacter: '*',
     );
   }
 }
 
+class UsernameField extends StatelessWidget {
+  const UsernameField({super.key, required this.usernameController});
+
+  final TextEditingController usernameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: usernameController,
+      decoration: const InputDecoration(
+        labelText: ' Username',
+        labelStyle: TextStyle(color: Colors.lightBlueAccent),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.lightBlueAccent),
+        ),
+      ),
+      style: const TextStyle(color: Colors.white),
+    );
+  }
+}
 /* 
   This section contains prebuilt widgets used throughout the app
   (Appbars, Buttons, BottomNavigationBar, etc.)
