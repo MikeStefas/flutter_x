@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/startpage.dart';
+import 'package:myapp/util/common_app_bar.dart';
+import 'package:myapp/util/common_bot_app_bar.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
@@ -7,30 +9,12 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.logout, color: Colors.lightBlueAccent),
-          onPressed: () => Navigator.pushNamed(context, '/login'),
-        ),
-        backgroundColor: Colors.black,
-        centerTitle: true,
-        title: Text(
-          'SmileCheck',
-          style: TextStyle(
-            color: Colors.lightBlueAccent,
-            fontSize: 34,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(2.0), // height of the line
-          child: Container(
-            color: Colors.lightBlueAccent, // line color
-            height: 2.0,
-          ),
-        ),
-      ),
+      appBar: CommonAppBar(),
+
+      //BODY
       body: History(),
+
+      bottomNavigationBar: CommonBotAppBar(),
       backgroundColor: Colors.black,
     );
   }
@@ -48,6 +32,7 @@ class _HistoryState extends State<History> {
 
   @override
   Widget build(BuildContext context) {
+    //TODO FIX THIS
     return ListView.builder(
       itemCount: len,
       itemBuilder: (context, index) {

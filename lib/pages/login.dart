@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/prebuiltwidgets.dart';
+import 'package:myapp/util/data_field.dart';
 
-// LoginFormin page widget
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -9,24 +8,17 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+
+      //body
       body: ListView(
         children: [
-          const Gap(),
-          const LoginText(),
+          const Padding(padding: EdgeInsets.symmetric(vertical: 70)),
+          const LoginTextArea(),
           const LoginForm(),
           const SignUpButton(),
         ],
       ),
     );
-  }
-}
-
-class Gap extends StatelessWidget {
-  const Gap({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(padding: EdgeInsets.symmetric(vertical: 70));
   }
 }
 
@@ -72,11 +64,17 @@ class _LoginFormState extends State<LoginForm> {
       children: [
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: UsernameField(usernameController: usernameController),
+          child: DataField(
+            dataController: usernameController,
+            label: 'Username',
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
-          child: PasswordField(passwordController: passwordController),
+          child: DataField(
+            dataController: passwordController,
+            label: 'Password',
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(30.0),
@@ -104,9 +102,36 @@ class SignUpButton extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
         onPressed: () {
-          Navigator.pushNamed(context, '/signup');
+          Navigator.pushNamed(context, '/signuppage');
         },
         child: const Text('Sign Up'),
+      ),
+    );
+  }
+}
+
+class LoginTextArea extends StatelessWidget {
+  const LoginTextArea({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'SmileCheck',
+            style: TextStyle(
+              fontSize: 34,
+              color: Colors.lightBlueAccent,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Log In',
+            style: TextStyle(fontSize: 27, color: Colors.lightBlueAccent),
+          ),
+        ],
       ),
     );
   }

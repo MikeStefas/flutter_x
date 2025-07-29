@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/prebuiltwidgets.dart';
+import 'package:myapp/util/common_app_bar.dart';
+import 'package:myapp/util/data_field.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -24,6 +25,9 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
@@ -37,12 +41,20 @@ class _SignUpFormState extends State<SignUpForm> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            UsernameField(usernameController: usernameController),
+            //components of body
+            DataField(dataController: usernameController, label: 'Username'),
             const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-            PasswordField(passwordController: passwordController),
+            DataField(dataController: passwordController, label: 'Password'),
             const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-            PasswordField(passwordController: confirmPasswordController),
-            const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+            DataField(
+              dataController: confirmPasswordController,
+              label: 'Confirm Password',
+            ),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+            DataField(dataController: firstNameController, label: 'First Name'),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+            DataField(dataController: lastNameController, label: 'Last Name'),
+            const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             ConfirmButton(onPressed: _passwordConfirm),
           ],
         ),
@@ -50,6 +62,7 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
+  //function
   void _passwordConfirm() {
     final password = passwordController.text;
     final confirmPassword = confirmPasswordController.text;

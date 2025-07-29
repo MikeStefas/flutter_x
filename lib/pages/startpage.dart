@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart'; // ignore: unused_import
 import 'package:myapp/pages/login.dart'; // ignore: unused_import
-import 'package:myapp/pages/prebuiltwidgets.dart';
+import 'package:myapp/util/common_app_bar.dart';
+import 'package:myapp/util/common_bot_app_bar.dart';
+import 'package:myapp/util/exit_alert.dart';
 import 'dart:io'; // ignore: unused_import
 import 'package:path_provider/path_provider.dart'; // ignore: unused_import
 import 'package:video_player/video_player.dart'; // ignore: unused_import
@@ -12,17 +14,46 @@ import 'package:intl/intl.dart'; // ignore: unused_import
 int videocounterG = 0;
 // Save the counter when the app is closing
 
-class StartPage extends StatelessWidget {
+class StartPage extends StatefulWidget {
   const StartPage({super.key});
 
   @override
+  State<StartPage> createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
+  Future<bool> _onWillPop() async {
+    // Show the confirmation dialog
+    final shouldDiscard = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return ALERT();
+      },
+    );
+
+    // If shouldDiscard is true, allow the page to pop (discard data)
+    // If shouldDiscard is false or null (dialog dismissed), prevent the page from popping
+    return shouldDiscard ??
+        false; // Return false if dialog is dismissed without a choice
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: CommonAppBar(),
-      // Add a body or other widgets here if needed
-      body: CaptureSection(),
-      bottomNavigationBar: CommonBotAppBar(),
+    return PopScope(
+      canPop: false, // Prevent automatic popping
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          return; // The pop gesture was successful.
+        }
+        _onWillPop(); // Show the dialog for Android back button
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: CommonAppBar(),
+        // Add a body or other widgets here if needed
+        body: CaptureSection(),
+        bottomNavigationBar: CommonBotAppBar(),
+      ),
     );
   }
 }

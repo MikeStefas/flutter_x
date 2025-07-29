@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/prebuiltwidgets.dart';
+import 'package:myapp/util/common_app_bar.dart';
+import 'package:myapp/util/common_bot_app_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,6 +30,7 @@ class HomePageBody extends StatelessWidget {
             style: TextStyle(fontSize: 28, color: Colors.lightBlueAccent),
           ),
           const SizedBox(height: 20),
+          // button
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.lightBlueAccent,

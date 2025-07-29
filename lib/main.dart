@@ -5,6 +5,7 @@ import 'package:myapp/pages/infopage.dart';
 import 'package:myapp/pages/startpage.dart';
 import 'package:myapp/pages/historypage.dart';
 import 'package:myapp/pages/signuppage.dart';
+import 'package:myapp/pages/datapage.dart';
 
 void main() {
   // Ensure that plugin services are initialized
@@ -23,12 +24,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: const LoginPage(),
       routes: {
-        '/login': (context) => const LoginPage(),
+        '/loginpage': (context) => const LoginPage(),
         '/homepage': (context) => const HomePage(),
         '/infopage': (context) => const InfoPage(),
         '/startpage': (context) => StartPage(),
         '/historypage': (context) => const HistoryPage(),
-        '/signup': (context) => const SignUp(),
+        '/signuppage': (context) => const SignUp(),
+        '/datapage': (context) => const DataPage(),
       },
     );
   }
