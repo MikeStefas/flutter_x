@@ -5,7 +5,7 @@ Future<bool> showPopConfirmationDialog(BuildContext context) async {
   final shouldDiscard = await showDialog<bool>(
     context: context,
     builder: (BuildContext dialogContext) {
-      return ALERT();
+      return ExitAlert();
     },
   );
 

@@ -20,12 +20,15 @@ class CommonBotAppBar extends StatelessWidget {
               children: [
                 IconButton(
                   icon: const Icon(
-                    Icons.info,
+                    Icons.history,
                     color: Colors.lightBlueAccent,
                     size: 30,
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/infopage');
+                  onPressed: () async {
+                    //await loadReports();
+                    if (context.mounted) {
+                      Navigator.pushNamed(context, '/historypage');
+                    }
                   },
                 ),
                 IconButton(
@@ -38,23 +41,15 @@ class CommonBotAppBar extends StatelessWidget {
                     Navigator.pushNamed(context, '/homepage');
                   },
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.history,
-                    color: Colors.lightBlueAccent,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/historypage');
-                  },
-                ),
+
                 IconButton(
                   icon: const Icon(
                     Icons.data_saver_on,
                     color: Colors.lightBlueAccent,
                     size: 30,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
+                    //await loadDemographics();
                     Navigator.pushNamed(context, '/datapage');
                   },
                 ),

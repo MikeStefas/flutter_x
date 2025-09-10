@@ -2,13 +2,12 @@
 import 'dart:io';
 import 'package:archive/archive_io.dart';
 import 'package:dartssh2/dartssh2.dart';
-import 'package:flutter/material.dart'; // For AlertDialog, SnackBar, etc.
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:myapp/pages/login.dart';
-import 'package:video_player/video_player.dart'; // Make sure this path is correct
+import 'package:myapp/pages/signinpage.dart';
+import 'package:video_player/video_player.dart';
 
-// Function to check if a file exists on the remote server via SSH
 Future<bool> checkRemoteExists(String path) async {
   try {
     final socket = await SSHSocket.connect("195.251.199.65", 3038);
@@ -32,20 +31,17 @@ Future<bool> checkRemoteExists(String path) async {
 // Function to send all collected data
 Future<void> sendAllData({
   required BuildContext context,
-  required StateSetter setStateCallback, // Pass setState from the State
+  required StateSetter setStateCallback,
   required List<File> tongueImages,
   required List<File> teethImages,
   required List<File> swellingImages,
   required File? solidVideo,
   required File? liquidVideo,
   required File? mixedVideo,
-  required Function(VideoPlayerController?)
-  setVideoControllerToNull, // To reset controller
+  required Function(VideoPlayerController?) setVideoControllerToNull,
   required String patientId,
 }) async {
-  setStateCallback(
-    () => {/* isSending = true */},
-  ); // You'll update isSending in the calling State
+  setStateCallback(() => {/* isSending = true */});
 
   final dir = await getApplicationDocumentsDirectory();
   final date = DateFormat('dd-MM-yyyy').format(DateTime.now());
@@ -86,9 +82,7 @@ Future<void> sendAllData({
       ),
     );
     if (confirmed != true) {
-      setStateCallback(() {
-        /* isSending = false */
-      }); // You'll update isSending in the calling State
+      setStateCallback(() {});
       return;
     }
   }
@@ -110,19 +104,11 @@ Future<void> sendAllData({
     await remoteFile.close();
     client.close();
 
-    // Clear data and reset UI
     setStateCallback(() {
       tongueImages.clear();
       teethImages.clear();
       swellingImages.clear();
-      // Need to null out these outside this func or pass callbacks
-      // solidVideo = null;
-      // liquidVideo = null;
-      // mixedVideo = null;
-      // _videoController?.dispose();
-      // _videoController = null;
     });
-    // This part should also be handled by the calling state
     setVideoControllerToNull(null);
 
     await showDialog(
@@ -143,7 +129,7 @@ Future<void> sendAllData({
       context,
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 300),
-        pageBuilder: (_, __, ___) => const LoginPage(),
+        pageBuilder: (_, __, ___) => const SignInPage(),
         transitionsBuilder: (_, animation, __, child) =>
             FadeTransition(opacity: animation, child: child),
       ),
@@ -153,8 +139,6 @@ Future<void> sendAllData({
       context,
     ).showSnackBar(SnackBar(content: Text("❌ Upload failed: $e")));
   } finally {
-    setStateCallback(() {
-      /* isSending = false */
-    }); // You'll update isSending in the calling State
+    setStateCallback(() {});
   }
 }

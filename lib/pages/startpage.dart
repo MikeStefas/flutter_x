@@ -3,7 +3,7 @@ import 'package:image_picker/image_picker.dart'; // ignore: unused_import
 import 'package:myapp/funcs/dataupload.dart';
 import 'package:myapp/funcs/mediacapture.dart';
 import 'package:myapp/funcs/popconfirmation.dart';
-import 'package:myapp/pages/login.dart'; // ignore: unused_import
+import 'package:myapp/pages/signinpage.dart'; // ignore: unused_import
 import 'package:myapp/util/common_app_bar.dart';
 import 'package:myapp/util/common_bot_app_bar.dart';
 import 'package:myapp/util/image_section.dart';

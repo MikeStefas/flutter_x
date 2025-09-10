@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/requests-funcs/logoutfunc.dart';
 import 'package:myapp/util/exit_alert.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -18,8 +19,8 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidget = IconButton(
         icon: const Icon(Icons.logout, color: Colors.lightBlueAccent),
         onPressed: () {
-          // You might want to clear user session/data here before navigating
-          Navigator.pushNamed(context, '/loginpage');
+          logout();
+          Navigator.pushNamed(context, '/signinpage');
         },
       );
     } else if (isStartPage) {
@@ -32,7 +33,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
             context: context,
             builder: (BuildContext dialogContext) {
               // Use a different context for the dialog
-              return ALERT();
+              return ExitAlert();
             },
           );
         },

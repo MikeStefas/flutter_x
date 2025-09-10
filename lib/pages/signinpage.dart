@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/requests-funcs/signIn_storeToken.dart';
 import 'package:myapp/util/data_field.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,45 +14,54 @@ class LoginPage extends StatelessWidget {
       body: ListView(
         children: [
           const Padding(padding: EdgeInsets.symmetric(vertical: 70)),
-          const LoginTextArea(),
-          const LoginForm(),
-          const SignUpButton(),
+          const SignInTextArea(),
+          const SignInForm(),
         ],
       ),
     );
   }
 }
 
-// LoginPage form
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+// SignInPage form
+class SignInForm extends StatefulWidget {
+  const SignInForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<SignInForm> createState() => _SignInFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
-  final TextEditingController usernameController = TextEditingController();
+class _SignInFormState extends State<SignInForm> {
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void greet() {
-    String username = usernameController.text;
+  signIn(String email, String password) async {
+    String email = emailController.text;
     String password = passwordController.text;
-    if (username.isEmpty || password.isEmpty) {
+
+    //empty fields
+    if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Enter username and password!',
-            style: TextStyle(
-              color: Colors.black,
-              decoration: TextDecoration.underline,
-            ),
+            'Enter email and password!',
+            style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.lightBlueAccent,
         ),
       );
       return;
-    } else {
+    }
+    final dynamic response = await signInRequest(email, password);
+    //errors!
+    if (response != null) {
+      return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.lightBlueAccent,
+          content: Text(response, style: TextStyle(color: Colors.black)),
+        ),
+      );
+    } //success!
+    else {
       Navigator.pushNamed(context, '/homepage');
     }
   }
@@ -64,22 +74,20 @@ class _LoginFormState extends State<LoginForm> {
       children: [
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: DataField(
-            dataController: usernameController,
-            label: 'Username',
-          ),
+          child: DataField(dataController: emailController, label: 'email'),
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: DataField(
             dataController: passwordController,
-            label: 'Password',
+            label: 'password',
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(30.0),
           child: FloatingActionButton(
-            onPressed: greet,
+            onPressed: () =>
+                signIn(emailController.text, passwordController.text),
             backgroundColor: Colors.lightBlueAccent,
             child: const Icon(Icons.check, color: Colors.black, size: 30),
           ),
@@ -89,29 +97,8 @@ class _LoginFormState extends State<LoginForm> {
   }
 }
 
-class SignUpButton extends StatelessWidget {
-  const SignUpButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(120, 80, 120, 0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.lightBlueAccent,
-          foregroundColor: Colors.black,
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, '/signuppage');
-        },
-        child: const Text('Sign Up'),
-      ),
-    );
-  }
-}
-
-class LoginTextArea extends StatelessWidget {
-  const LoginTextArea({super.key});
+class SignInTextArea extends StatelessWidget {
+  const SignInTextArea({super.key});
   @override
   Widget build(BuildContext context) {
     return const Center(

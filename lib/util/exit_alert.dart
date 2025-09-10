@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ALERT extends StatelessWidget {
-  const ALERT({super.key});
+class ExitAlert extends StatelessWidget {
+  const ExitAlert({super.key});
 
   @override
   Widget build(BuildContext context) {

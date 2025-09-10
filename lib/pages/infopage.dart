@@ -26,6 +26,7 @@ class InfoPageBody extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       children: [
         InfoBox(title: '1)click stuff', txt: 'idk sum stuff will be here'),
+
         InfoBox(
           title: '2)click more stuff',
           txt: 'Hello World of reusable custom widgets!',
