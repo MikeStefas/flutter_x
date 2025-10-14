@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:myapp/link.dart';
 
 //signin and store the tokens in local storage
@@ -19,6 +20,12 @@ Future<dynamic> signInRequest(String email, String password) async {
     if (response.statusCode == 200 || response.statusCode == 201) {
       //save the tokens in secure storage
       final Map<String, dynamic> responseData = jsonDecode(response.body);
+
+      //CHECK ROLE
+      var role = JwtDecoder.decode(responseData['access_token'])['role'];
+      if (role != 'USER') {
+        return 'You are not a user';
+      }
 
       await storage.write(
         key: 'access_token',

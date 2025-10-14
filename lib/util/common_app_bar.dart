@@ -39,12 +39,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
       );
     } else {
-      leadingWidget = IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.lightBlueAccent),
-        onPressed: () {
-          Navigator.pop(context); // Go back to the previous route
-        },
-      );
+      leadingWidget = Icon(Icons.abc, color: Colors.transparent);
     }
 
     return AppBar(

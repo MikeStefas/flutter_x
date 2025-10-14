@@ -77,8 +77,8 @@ class ShowMyData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InfoBox(
-      title: 'Your Demographic Data:',
-      txt: 'year of birth: $yob \ngender: $gender',
+      title: 'Your Data:',
+      txt: 'Year of birth: $yob \nGender: $gender',
     );
   }
 }
@@ -101,7 +101,7 @@ class _UploadDataState extends State<UploadData> {
       children: [
         const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
         const Text(
-          "Upload your data:",
+          "Upload/Update your data:",
           style: TextStyle(color: Colors.lightBlueAccent, fontSize: 22),
         ),
         const SizedBox(height: 10),

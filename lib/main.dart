@@ -5,6 +5,7 @@ import 'package:myapp/pages/infopage.dart';
 import 'package:myapp/pages/startpage.dart';
 import 'package:myapp/pages/historypage.dart';
 import 'package:myapp/pages/datapage.dart';
+import 'package:myapp/requests-funcs/tokensExist.dart';
 
 void main() {
   // Ensure that plugin services are initialized
@@ -21,13 +22,25 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SmileCheck',
       theme: ThemeData(primarySwatch: Colors.lightBlue),
-      home: const SignInPage(),
+      home: FutureBuilder<bool>(
+        future: tokensExist(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasData && snapshot.data!) {
+            return const HomePage();
+          } else {
+            return const SignInPage();
+          }
+        },
+      ),
       routes: {
         '/signinpage': (context) => const SignInPage(),
         '/homepage': (context) => const HomePage(),
         '/infopage': (context) => const InfoPage(),
         '/startpage': (context) => StartPage(),
-        '/historypage': (context) => const HistoryPage(reports: []),
+        '/historypage': (context) =>
+            const HistoryPage(reports: [], selectedDate: null),
         '/datapage': (context) => const DataPage(),
       },
     );
