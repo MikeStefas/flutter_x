@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/homepage.dart';
-import 'package:myapp/pages/signinpage.dart';
-import 'package:myapp/pages/infopage.dart';
+import 'package:myapp/pages/homePage/homepage.dart';
+import 'package:myapp/pages/signinPage/signinpage.dart';
+import 'package:myapp/pages/infoPage/infopage.dart';
 import 'package:myapp/pages/startpage.dart';
-import 'package:myapp/pages/historypage.dart';
-import 'package:myapp/pages/datapage.dart';
+import 'package:myapp/pages/historyPage/historypage.dart';
+import 'package:myapp/pages/demographicDataPage/demographicDatapage.dart';
 import 'package:myapp/requests-funcs/tokensExist.dart';
 
 void main() {
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         '/startpage': (context) => StartPage(),
         '/historypage': (context) =>
             const HistoryPage(reports: [], selectedDate: null),
-        '/datapage': (context) => const DataPage(),
+        '/demographicDatapage': (context) => const DataPage(),
       },
     );
   }

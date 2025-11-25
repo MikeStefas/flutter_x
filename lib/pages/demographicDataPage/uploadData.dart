@@ -1,87 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/demographicDataPage/confirmButton.dart';
+import 'package:myapp/pages/demographicDataPage/demographicDatapage.dart';
 import 'package:myapp/requests-funcs/createDemographicDataRequest.dart';
-import 'package:myapp/requests-funcs/viewDemographicData.dart';
 import 'package:myapp/requests-funcs/updateDemographicData.dart';
-import 'package:myapp/util/common_app_bar.dart';
-import 'package:myapp/util/common_bot_app_bar.dart';
 import 'package:myapp/util/data_field.dart';
-import 'package:myapp/util/info_box.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-var currentYob = 0;
-var currentGender = 'Missing';
-
-const storage = FlutterSecureStorage();
-
-//run on commonBottomAppBar button press!
-
-class DataPage extends StatelessWidget {
-  const DataPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CommonAppBar(),
-
-      //BODY
-      body: DataPageBody(),
-
-      bottomNavigationBar: CommonBotAppBar(),
-      backgroundColor: Colors.black,
-    );
-  }
-}
-
-class DataPageBody extends StatefulWidget {
-  const DataPageBody({super.key});
-
-  @override
-  State<DataPageBody> createState() => _DataPageBodyState();
-}
-
-class _DataPageBodyState extends State<DataPageBody> {
-  //the function that brings the data here
-  Future<void> loadDemographics() async {
-    var res = await viewDemographicDataRequest();
-    if (res != null) {
-      currentYob = res['yearOfBirth'];
-      currentGender = res['gender'];
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    () async {
-      await loadDemographics();
-      setState(() {});
-    }();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        ShowMyData(yob: currentYob, gender: currentGender),
-        UploadData(),
-      ],
-    );
-  }
-}
-
-class ShowMyData extends StatelessWidget {
-  final int yob;
-  final String gender;
-  const ShowMyData({super.key, required this.yob, required this.gender});
-
-  @override
-  Widget build(BuildContext context) {
-    return InfoBox(
-      title: 'Your Data:',
-      txt: 'Year of birth: $yob \nGender: $gender',
-    );
-  }
-}
 
 class UploadData extends StatefulWidget {
   const UploadData({super.key});
@@ -154,19 +76,23 @@ class _UploadDataState extends State<UploadData> {
   }
 
   handleConfirm() async {
-    //data is missing: create request
+    //data is missing: create request and refresh
     var result = '';
-    if (currentYob == 0 && currentGender == 'Missing') {
+    if (currentYob == 0 && currentGender == ' ') {
       result = await createDemographicDataRequest(
         int.parse(yobController.text),
         selectedGender,
       );
-    } //data is present: patch
+      Navigator.pop(context);
+      Navigator.pushNamed(context, '/demographicDatapage');
+    } //data is present: patch and refresh
     else {
       result = await updateDemographicDataRequest(
         int.parse(yobController.text),
         selectedGender,
       );
+      Navigator.pop(context);
+      Navigator.pushNamed(context, '/demographicDatapage');
     }
 
     if (result == 'success') {
@@ -200,23 +126,5 @@ class _UploadDataState extends State<UploadData> {
         ),
       );
     }
-  }
-}
-
-class ConfirmButton extends StatelessWidget {
-  final VoidCallback onPressed;
-
-  const ConfirmButton({super.key, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.lightBlueAccent,
-        foregroundColor: Colors.black,
-      ),
-      child: const Text('Confirm'),
-    );
   }
 }

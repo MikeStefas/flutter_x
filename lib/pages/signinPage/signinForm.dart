@@ -2,27 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/requests-funcs/signIn_storeToken.dart';
 import 'package:myapp/util/data_field.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-
-      //body
-      body: ListView(
-        children: [
-          const Padding(padding: EdgeInsets.symmetric(vertical: 70)),
-          const SignInTextArea(),
-          const SignInForm(),
-        ],
-      ),
-    );
-  }
-}
-
-// SignInPage form
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
 
@@ -93,33 +72,6 @@ class _SignInFormState extends State<SignInForm> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class SignInTextArea extends StatelessWidget {
-  const SignInTextArea({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'SmileCheck',
-            style: TextStyle(
-              fontSize: 34,
-              color: Colors.lightBlueAccent,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 20),
-          Text(
-            'Log In',
-            style: TextStyle(fontSize: 27, color: Colors.lightBlueAccent),
-          ),
-        ],
-      ),
     );
   }
 }

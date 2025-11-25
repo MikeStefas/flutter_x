@@ -50,7 +50,7 @@ class CommonBotAppBar extends StatelessWidget {
                   ),
                   onPressed: () async {
                     //await loadDemographics();
-                    Navigator.pushNamed(context, '/datapage');
+                    Navigator.pushNamed(context, '/demographicDatapage');
                   },
                 ),
               ],

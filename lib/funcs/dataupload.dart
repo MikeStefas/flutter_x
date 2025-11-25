@@ -5,7 +5,7 @@ import 'package:dartssh2/dartssh2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:myapp/pages/signinpage.dart';
+import 'package:myapp/pages/signinPage/signinpage.dart';
 import 'package:video_player/video_player.dart';
 
 Future<bool> checkRemoteExists(String path) async {

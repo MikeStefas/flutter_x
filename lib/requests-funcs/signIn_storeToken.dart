@@ -23,8 +23,8 @@ Future<dynamic> signInRequest(String email, String password) async {
 
       //CHECK ROLE
       var role = JwtDecoder.decode(responseData['access_token'])['role'];
-      if (role != 'USER') {
-        return 'You are not a user';
+      if (role != 'PATIENT') {
+        return 'You are not a patient';
       }
 
       await storage.write(
