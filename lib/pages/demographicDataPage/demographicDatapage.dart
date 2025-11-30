@@ -6,8 +6,8 @@ import 'package:myapp/util/common_app_bar.dart';
 import 'package:myapp/util/common_bot_app_bar.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-var currentYob = 0;
-var currentGender = ' ';
+int currentYob = 0;
+String currentGender = ' ';
 
 const storage = FlutterSecureStorage();
 
@@ -38,12 +38,16 @@ class DataPageBody extends StatefulWidget {
 }
 
 class _DataPageBodyState extends State<DataPageBody> {
-  //the function that brings the data here
+  bool hasDemographics = false;
   Future<void> loadDemographics() async {
+    //reset numbers through page changes
+    currentYob = 0;
+    currentGender = ' ';
     var res = await viewDemographicDataRequest();
-    if (res != null) {
+    if (res != null && res != '{message: Demographics do not exist}') {
       currentYob = res['yearOfBirth'];
       currentGender = res['gender'];
+      hasDemographics = true;
     }
   }
 
@@ -60,7 +64,11 @@ class _DataPageBodyState extends State<DataPageBody> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        ShowMyData(yob: currentYob, gender: currentGender),
+        ShowMyData(
+          yob: currentYob,
+          gender: currentGender,
+          hasDemographics: hasDemographics,
+        ),
         UploadData(),
       ],
     );

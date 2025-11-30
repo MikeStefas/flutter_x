@@ -53,6 +53,10 @@ class _HistoryState extends State<History> {
   void initState() {
     super.initState();
     () async {
+      //fixed bug that would keep user1 reports if u logged in with user2 who has no reports
+      setState(() {
+        reports = [];
+      });
       await _loadReports();
       //sort by neqest first
       reports.sort((a, b) {

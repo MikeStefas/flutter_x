@@ -4,13 +4,26 @@ import 'package:myapp/util/info_box.dart';
 class ShowMyData extends StatelessWidget {
   final int yob;
   final String gender;
-  const ShowMyData({super.key, required this.yob, required this.gender});
+  final bool hasDemographics;
+  const ShowMyData({
+    super.key,
+    required this.yob,
+    required this.gender,
+    required this.hasDemographics,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return InfoBox(
-      title: 'Your demographicData:',
-      txt: 'Year of birth: $yob \nGender: $gender',
-    );
+    if (hasDemographics == false) {
+      return InfoBox(
+        title: 'Your demographicData:',
+        txt: 'You have not uploaded demographic data yet.',
+      );
+    } else {
+      return InfoBox(
+        title: 'Your demographicData:',
+        txt: 'Year of birth: $yob \nGender: $gender',
+      );
+    }
   }
 }
