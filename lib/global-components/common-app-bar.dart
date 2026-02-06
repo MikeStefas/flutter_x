@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/requests-funcs/logoutfunc.dart';
-import 'package:myapp/util/exit_alert.dart';
+import 'package:myapp/services/logout-func.dart';
+import 'package:myapp/global-components/exit-alert.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonAppBar({super.key});
@@ -27,12 +27,9 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidget = IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.lightBlueAccent),
         onPressed: () {
-          // *** THIS IS THE CRUCIAL CHANGE ***
           showDialog<bool>(
-            // Specify <bool> to indicate the type of value the dialog returns
             context: context,
             builder: (BuildContext dialogContext) {
-              // Use a different context for the dialog
               return ExitAlert();
             },
           );

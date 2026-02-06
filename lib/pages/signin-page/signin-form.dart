@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/requests-funcs/signIn_storeToken.dart';
-import 'package:myapp/util/data_field.dart';
+import 'package:myapp/global-components/data-field.dart';
+import 'package:myapp/services/sign-in.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -12,38 +12,6 @@ class SignInForm extends StatefulWidget {
 class _SignInFormState extends State<SignInForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  signIn(String email, String password) async {
-    String email = emailController.text;
-    String password = passwordController.text;
-
-    //empty fields
-    if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            'Enter email and password!',
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.lightBlueAccent,
-        ),
-      );
-      return;
-    }
-    final dynamic response = await signInRequest(email, password);
-    //errors!
-    if (response != null) {
-      return ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.lightBlueAccent,
-          content: Text(response, style: TextStyle(color: Colors.black)),
-        ),
-      );
-    } //success!
-    else {
-      Navigator.pushNamed(context, '/homepage');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +34,7 @@ class _SignInFormState extends State<SignInForm> {
           padding: const EdgeInsets.all(30.0),
           child: FloatingActionButton(
             onPressed: () =>
-                signIn(emailController.text, passwordController.text),
+                signIn(emailController.text, passwordController.text, context),
             backgroundColor: Colors.lightBlueAccent,
             child: const Icon(Icons.check, color: Colors.black, size: 30),
           ),

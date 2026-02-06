@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/demographicDataPage/confirmButton.dart';
-import 'package:myapp/pages/demographicDataPage/demographicDatapage.dart';
-import 'package:myapp/requests-funcs/createDemographicDataRequest.dart';
-import 'package:myapp/requests-funcs/updateDemographicData.dart';
-import 'package:myapp/util/data_field.dart';
+import 'package:myapp/pages/demographic-data-page/confirm-button.dart';
+import 'package:myapp/pages/demographic-data-page/demographic-data-page.dart';
+import 'package:myapp/requests/create-demographic-data-request.dart';
+import 'package:myapp/requests/update-demographic-data.dart';
+import 'package:myapp/global-components/data-field.dart';
 
 class UploadData extends StatefulWidget {
   const UploadData({super.key});

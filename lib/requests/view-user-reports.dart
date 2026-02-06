@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:myapp/link.dart';
-import 'package:myapp/requests-funcs/refreshToken.dart';
+import 'package:myapp/requests/refresh-token.dart';
 
 Future<dynamic> viewUserReportsRequest() async {
   await refreshToken();

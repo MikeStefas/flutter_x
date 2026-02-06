@@ -1,18 +1,17 @@
-//on history button press
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:myapp/link.dart';
-import 'package:myapp/requests-funcs/refreshToken.dart';
+import 'package:myapp/requests/refresh-token.dart';
 
-Future<dynamic> updateDemographicDataRequest(yob, gender) async {
+Future<dynamic> createDemographicDataRequest(yob, gender) async {
   await refreshToken();
   try {
     final storage = FlutterSecureStorage();
     String token = await storage.read(key: 'access_token') ?? "";
-    final response = await http.patch(
-      Uri.parse('$link/demographics/update-demographic-data'),
+    final response = await http.post(
+      Uri.parse('$link/demographics/create-demographic-data'),
       headers: <String, String>{
         'ngrok-skip-browser-warning': 'true', //BRUH MOMENT
         'Authorization': 'Bearer $token',

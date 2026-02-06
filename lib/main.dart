@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/homePage/homepage.dart';
-import 'package:myapp/pages/signinPage/signinpage.dart';
-import 'package:myapp/pages/infoPage/infopage.dart';
-import 'package:myapp/pages/startpage.dart';
-import 'package:myapp/pages/historyPage/historypage.dart';
-import 'package:myapp/pages/demographicDataPage/demographicDatapage.dart';
-import 'package:myapp/requests-funcs/tokensExist.dart';
+import 'package:myapp/pages/home-page/home-page.dart';
+import 'package:myapp/pages/signin-page/signin-page.dart';
+import 'package:myapp/pages/info-page/info-page.dart';
+import 'package:myapp/pages/start-page.dart';
+import 'package:myapp/pages/history-page/history-page.dart';
+import 'package:myapp/pages/demographic-data-page/demographic-data-page.dart';
+import 'package:myapp/services/tokens-exist.dart';
 
 void main() {
   // Ensure that plugin services are initialized

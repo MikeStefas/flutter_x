@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart'; // ignore: unused_import
-import 'package:myapp/funcs/dataupload.dart';
-import 'package:myapp/funcs/mediacapture.dart';
-import 'package:myapp/funcs/popconfirmation.dart';
-import 'package:myapp/pages/signinPage/signinpage.dart'; // ignore: unused_import
-import 'package:myapp/util/common_app_bar.dart';
-import 'package:myapp/util/common_bot_app_bar.dart';
-import 'package:myapp/util/image_section.dart';
-import 'package:myapp/util/video_section.dart';
-import 'dart:io'; // ignore: unused_import
-import 'package:path_provider/path_provider.dart'; // ignore: unused_import
-import 'package:video_player/video_player.dart'; // ignore: unused_import
-import 'package:archive/archive_io.dart'; // ignore: unused_import
-import 'package:dartssh2/dartssh2.dart'; // ignore: unused_import
-import 'package:intl/intl.dart'; // ignore: unused_import
+import 'package:image_picker/image_picker.dart';
+import 'package:myapp/services/data-upload.dart';
+import 'package:myapp/services/media-capture.dart';
+import 'package:myapp/services/pop-confirmation.dart';
+import 'package:myapp/global-components/common-app-bar.dart';
+import 'package:myapp/global-components/common-bot-app-bar.dart';
+import 'package:myapp/global-components/image-section.dart';
+import 'package:myapp/global-components/video-section.dart';
+import 'dart:io';
+import 'package:video_player/video_player.dart';
 
 int videocounterG = 0;
 // Save the counter when the app is closing
@@ -33,28 +28,23 @@ class _StartPageState extends State<StartPage> {
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) async {
-        // Make onPopInvoked async
         if (didPop) {
           return;
         }
-        // Call the external function here
         final bool shouldPop = await showPopConfirmationDialog(context);
         if (shouldPop) {
-          Navigator.of(context).pop(); // Manually pop if confirmed
+          Navigator.of(context).pop();
         }
       },
       child: Scaffold(
         backgroundColor: Colors.black,
-        appBar:
-            const CommonAppBar(), // Assuming CommonAppBar is const or doesn't need hot reload
+        appBar: const CommonAppBar(),
         body: const CaptureSection(),
         bottomNavigationBar: const CommonBotAppBar(),
       ),
     );
   }
 }
-
-// lib/pages/start_page.dart (Continuation of your file)
 
 class CaptureSection extends StatefulWidget {
   const CaptureSection({super.key});
@@ -78,14 +68,12 @@ class _CaptureSectionState extends State<CaptureSection> {
       liquidVideo != null &&
       mixedVideo != null;
 
-  // Lifecycle method to dispose of the video controller when the widget is removed
   @override
   void dispose() {
     _videoController?.dispose();
     super.dispose();
   }
 
-  // Modified methods to call external functions and pass setState
   Future<void> _addImageHandler(List<File> storage) async {
     await addImage(_picker, storage, setState);
   }
@@ -99,22 +87,20 @@ class _CaptureSectionState extends State<CaptureSection> {
       _picker,
       setFile,
       _videoController,
-      (newController) => _videoController =
-          newController, // Callback to update _videoController
+      (newController) => _videoController = newController,
       setState,
     );
   }
 
   Future<void> _sendDataHandler() async {
-    setState(() => isSending = true); // Update local state for UI feedback
+    setState(() => isSending = true);
 
     final patientId =
         ModalRoute.of(context)?.settings.arguments as String? ?? 'Unknown';
 
     await sendAllData(
       context: context,
-      setStateCallback:
-          setState, // Pass setState for internal updates (like clearing lists)
+      setStateCallback: setState,
       tongueImages: tongueImages,
       teethImages: teethImages,
       swellingImages: swellingImages,
@@ -122,16 +108,15 @@ class _CaptureSectionState extends State<CaptureSection> {
       liquidVideo: liquidVideo,
       mixedVideo: mixedVideo,
       setVideoControllerToNull: (controller) {
-        _videoController?.dispose(); // Dispose current controller if any
-        _videoController = controller; // Set to null
+        _videoController?.dispose();
+        _videoController = controller;
       },
       patientId: patientId,
     );
 
-    setState(() => isSending = false); // Update local state after operation
+    setState(() => isSending = false);
   }
 
-  // BUILDER
   @override
   Widget build(BuildContext context) {
     return Scaffold(

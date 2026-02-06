@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/signinPage/SignInTextArea.dart';
-import 'package:myapp/pages/signinPage/signinForm.dart';
+import 'package:myapp/pages/signin-page/sign-in-text-area.dart';
+import 'package:myapp/pages/signin-page/signin-form.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});

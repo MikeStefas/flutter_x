@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/homePage/infoButton.dart';
-import 'package:myapp/pages/homePage/startButton.dart';
-import 'package:myapp/util/common_app_bar.dart';
-import 'package:myapp/util/common_bot_app_bar.dart';
+import 'package:myapp/pages/home-page/info-button.dart';
+import 'package:myapp/pages/home-page/start-button.dart';
+import 'package:myapp/global-components/common-app-bar.dart';
+import 'package:myapp/global-components/common-bot-app-bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,7 +35,6 @@ class HomePageBody extends StatelessWidget {
 
           // button
           StartButton(),
-          Container(height: 20),
           InfoButton(),
         ],
       ),

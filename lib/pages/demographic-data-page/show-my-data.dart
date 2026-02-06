@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/util/info_box.dart';
+import 'package:myapp/global-components/info-box.dart';
 
 class ShowMyData extends StatelessWidget {
   final int yob;
