@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/demographic-data-page/confirm-button.dart';
+import 'package:myapp/pages/demographic-data-page/components/confirm-button.dart';
 import 'package:myapp/pages/demographic-data-page/demographic-data-page.dart';
 import 'package:myapp/requests/create-demographic-data-request.dart';
 import 'package:myapp/requests/update-demographic-data.dart';

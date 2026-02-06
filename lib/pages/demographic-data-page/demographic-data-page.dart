@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/demographic-data-page/show-my-data.dart';
-import 'package:myapp/pages/demographic-data-page/upload-data.dart';
+import 'package:myapp/pages/demographic-data-page/components/show-my-data.dart';
+import 'package:myapp/pages/demographic-data-page/components/upload-data.dart';
 import 'package:myapp/requests/view-demographic-data.dart';
 import 'package:myapp/global-components/common-app-bar.dart';
 import 'package:myapp/global-components/common-bot-app-bar.dart';

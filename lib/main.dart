@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/home-page/home-page.dart';
 import 'package:myapp/pages/signin-page/signin-page.dart';
 import 'package:myapp/pages/info-page/info-page.dart';
-import 'package:myapp/pages/start-page.dart';
+import 'package:myapp/pages/start-page/start-page.dart';
 import 'package:myapp/pages/history-page/history-page.dart';
 import 'package:myapp/pages/demographic-data-page/demographic-data-page.dart';
-import 'package:myapp/services/tokens-exist.dart';
+import 'package:myapp/actions/tokens-exist.dart';
 
 void main() {
   // Ensure that plugin services are initialized

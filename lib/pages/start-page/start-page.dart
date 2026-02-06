@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:myapp/services/data-upload.dart';
-import 'package:myapp/services/media-capture.dart';
-import 'package:myapp/services/pop-confirmation.dart';
+import 'package:myapp/actions/data-upload.dart';
+import 'package:myapp/actions/media-capture.dart';
+import 'package:myapp/actions/pop-confirmation.dart';
 import 'package:myapp/global-components/common-app-bar.dart';
 import 'package:myapp/global-components/common-bot-app-bar.dart';
-import 'package:myapp/global-components/image-section.dart';
-import 'package:myapp/global-components/video-section.dart';
+import 'package:myapp/pages/start-page/components/image-section.dart';
+import 'package:myapp/pages/start-page/components/video-section.dart';
 import 'dart:io';
 import 'package:video_player/video_player.dart';
 

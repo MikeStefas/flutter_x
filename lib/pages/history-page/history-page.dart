@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/history-page/date-picker.dart';
-import 'package:myapp/pages/history-page/reports-list-builder.dart';
+import 'package:myapp/pages/history-page/components/date-picker.dart';
+import 'package:myapp/pages/history-page/components/reports-list-builder.dart';
 import 'package:myapp/requests/view-user-reports.dart';
 import 'package:myapp/global-components/common-app-bar.dart';
 import 'package:myapp/global-components/common-bot-app-bar.dart';

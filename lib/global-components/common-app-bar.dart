@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/services/logout-func.dart';
+import 'package:myapp/actions/logout-func.dart';
 import 'package:myapp/global-components/exit-alert.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {

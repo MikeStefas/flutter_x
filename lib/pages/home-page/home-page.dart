@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/home-page/info-button.dart';
-import 'package:myapp/pages/home-page/start-button.dart';
+import 'package:myapp/pages/home-page/components/info-button.dart';
+import 'package:myapp/pages/home-page/components/start-button.dart';
 import 'package:myapp/global-components/common-app-bar.dart';
 import 'package:myapp/global-components/common-bot-app-bar.dart';
 
