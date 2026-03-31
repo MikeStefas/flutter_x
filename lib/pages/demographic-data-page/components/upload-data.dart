@@ -76,7 +76,6 @@ class _UploadDataState extends State<UploadData> {
   }
 
   handleConfirm() async {
-    //data is missing: create request and refresh
     var result = '';
     if (currentYob == 0 && currentGender == ' ') {
       result = await createDemographicDataRequest(
@@ -85,7 +84,7 @@ class _UploadDataState extends State<UploadData> {
       );
       Navigator.pop(context);
       Navigator.pushNamed(context, '/demographicDatapage');
-    } //data is present: patch and refresh
+    } 
     else {
       result = await updateDemographicDataRequest(
         int.parse(yobController.text),
@@ -96,7 +95,6 @@ class _UploadDataState extends State<UploadData> {
     }
 
     if (result == 'success') {
-      // Show a success dialog
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -118,7 +116,6 @@ class _UploadDataState extends State<UploadData> {
         },
       );
     } else {
-      // Show an error popup
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.lightBlueAccent,

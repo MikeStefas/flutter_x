@@ -1,4 +1,3 @@
-// lib/funcs/data_upload.dart
 import 'dart:io';
 import 'package:archive/archive_io.dart';
 import 'package:dartssh2/dartssh2.dart';
@@ -28,7 +27,6 @@ Future<bool> checkRemoteExists(String path) async {
   }
 }
 
-// Function to send all collected data
 Future<void> sendAllData({
   required BuildContext context,
   required StateSetter setStateCallback,
@@ -41,7 +39,7 @@ Future<void> sendAllData({
   required Function(VideoPlayerController?) setVideoControllerToNull,
   required String patientId,
 }) async {
-  setStateCallback(() => {/* isSending = true */});
+  setStateCallback(() => {});
 
   final dir = await getApplicationDocumentsDirectory();
   final date = DateFormat('dd-MM-yyyy').format(DateTime.now());

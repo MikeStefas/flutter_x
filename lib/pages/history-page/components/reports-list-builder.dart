@@ -22,7 +22,6 @@ class reportsListBuilder extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.history, color: Colors.lightBlueAccent),
             title: Text(
-              //show date
               DateTime.parse(
                     reports[index]['createdAt'],
                   ).toString().split(':')[0] +

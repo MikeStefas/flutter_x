@@ -11,7 +11,7 @@ class ExitAlert extends StatelessWidget {
       content: const Text("Do you want to discard data?"),
       actions: <Widget>[
         TextButton(
-          onPressed: () => Navigator.pop(context), // User chose 'No'
+          onPressed: () => Navigator.pop(context),
           child: const Text("No"),
         ),
         ElevatedButton(
@@ -20,7 +20,7 @@ class ExitAlert extends StatelessWidget {
             foregroundColor: Colors.black,
           ),
           onPressed: () =>
-              Navigator.pushNamed(context, '/homepage'), // User chose 'Yes'
+              Navigator.pushNamed(context, '/homepage'),
           child: const Text("Yes"),
         ),
       ],

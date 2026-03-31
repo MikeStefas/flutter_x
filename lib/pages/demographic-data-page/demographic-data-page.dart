@@ -11,7 +11,6 @@ String currentGender = ' ';
 
 const storage = FlutterSecureStorage();
 
-//run on commonBottomAppBar button press!
 
 class DataPage extends StatelessWidget {
   const DataPage({super.key});
@@ -21,7 +20,6 @@ class DataPage extends StatelessWidget {
     return Scaffold(
       appBar: CommonAppBar(),
 
-      //BODY
       body: DataPageBody(),
 
       bottomNavigationBar: CommonBotAppBar(),
@@ -40,7 +38,6 @@ class DataPageBody extends StatefulWidget {
 class _DataPageBodyState extends State<DataPageBody> {
   bool hasDemographics = false;
   Future<void> loadDemographics() async {
-    //reset numbers through page changes
     currentYob = 0;
     currentGender = ' ';
     var res = await viewDemographicDataRequest();

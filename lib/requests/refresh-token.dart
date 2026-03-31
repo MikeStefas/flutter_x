@@ -12,7 +12,7 @@ Future<dynamic> refreshToken() async {
       final response = await http.get(
         Uri.parse('$link/auth/refresh'),
         headers: <String, String>{
-          'ngrok-skip-browser-warning': 'true', //BRUH MOMENT
+          'ngrok-skip-browser-warning': 'true',
           'Authorization': 'Bearer $refreshToken',
         },
       );

@@ -9,7 +9,7 @@ class SignInTextArea extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'SmileCheck',
+            'Xerostomia',
             style: TextStyle(
               fontSize: 34,
               color: Colors.lightBlueAccent,

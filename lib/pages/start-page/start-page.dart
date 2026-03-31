@@ -11,7 +11,6 @@ import 'dart:io';
 import 'package:video_player/video_player.dart';
 
 int videocounterG = 0;
-// Save the counter when the app is closing
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -21,7 +20,6 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  // Remove the _onWillPop function from here
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +51,6 @@ class CaptureSection extends StatefulWidget {
 }
 
 class _CaptureSectionState extends State<CaptureSection> {
-  // LOGIC, FUNCTONS, VARIABLES AND WIDGETS USED FOR CAMERA CAPTURE
   final ImagePicker _picker = ImagePicker();
   List<File> tongueImages = [], teethImages = [], swellingImages = [];
   File? solidVideo, liquidVideo, mixedVideo;
@@ -189,9 +186,9 @@ class _CaptureSectionState extends State<CaptureSection> {
                     title: "Solid Swallow Video",
                     file: solidVideo,
                     setFile: (f) =>
-                        setState(() => solidVideo = f), // Direct setState here
+                        setState(() => solidVideo = f),
                     setVideo: (Function(File) setFile) =>
-                        _setVideoHandler(setFile), // Pass through
+                        _setVideoHandler(setFile),
                     videoController: _videoController,
                   ),
                   const SizedBox(height: 20),
@@ -207,9 +204,9 @@ class _CaptureSectionState extends State<CaptureSection> {
                     title: "Liquid Swallow Video",
                     file: liquidVideo,
                     setFile: (f) =>
-                        setState(() => liquidVideo = f), // Direct setState here
+                        setState(() => liquidVideo = f),
                     setVideo: (Function(File) setFile) =>
-                        _setVideoHandler(setFile), // Pass through
+                        _setVideoHandler(setFile),
                     videoController: _videoController,
                   ),
                   const SizedBox(height: 20),
@@ -225,9 +222,9 @@ class _CaptureSectionState extends State<CaptureSection> {
                     title: "Mixed Swallow Video",
                     file: mixedVideo,
                     setFile: (f) =>
-                        setState(() => mixedVideo = f), // Direct setState here
+                        setState(() => mixedVideo = f),
                     setVideo: (Function(File) setFile) =>
-                        _setVideoHandler(setFile), // Pass through
+                        _setVideoHandler(setFile),
                     videoController: _videoController,
                   ),
                   const SizedBox(height: 20),

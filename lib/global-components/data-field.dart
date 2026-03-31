@@ -13,7 +13,7 @@ class DataField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      obscureText: label == 'password' ? true : false, //passwords are obscure
+      obscureText: label == 'password' ? true : false,
       controller: dataController,
       decoration: InputDecoration(
         labelText: label,

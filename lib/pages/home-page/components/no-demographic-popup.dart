@@ -11,7 +11,7 @@ Future<dynamic> NoDemographicsPopup(BuildContext context) {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop(); // close the dialog
+              Navigator.of(context).pop();
             },
             child: const Text("OK"),
           ),

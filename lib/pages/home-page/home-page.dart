@@ -28,12 +28,11 @@ class HomePageBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Text(
-            'SmileCheck',
+            'Xerostomia',
             style: TextStyle(fontSize: 28, color: Colors.lightBlueAccent),
           ),
           const SizedBox(height: 20),
 
-          // button
           StartButton(),
           InfoButton(),
         ],

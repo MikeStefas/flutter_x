@@ -10,7 +10,6 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
 
-      //body
       body: ListView(
         children: [
           const Padding(padding: EdgeInsets.symmetric(vertical: 70)),
@@ -22,4 +21,3 @@ class SignInPage extends StatelessWidget {
   }
 }
 
-// SignInPage form

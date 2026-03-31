@@ -41,25 +41,23 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       leading:
-          leadingWidget, // This will be null if not homepage, effectively hiding it
+          leadingWidget,
       backgroundColor: Colors.black,
       centerTitle: true,
-      title: const Text('SmileCheck', style: titleTextStyle),
+      title: const Text('Xerostomia', style: titleTextStyle),
       bottom: bottomLine,
     );
   }
 }
 
-// Common BottomLine
 var bottomLine = PreferredSize(
-  preferredSize: const Size.fromHeight(2.0), // height of the line
+  preferredSize: const Size.fromHeight(2.0),
   child: Container(
-    color: Colors.lightBlueAccent, // line color
+    color: Colors.lightBlueAccent,
     height: 2.0,
   ),
 );
 
-// Common TextStyle for titles
 const titleTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
   fontSize: 34,

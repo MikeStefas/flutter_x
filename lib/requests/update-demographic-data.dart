@@ -1,4 +1,3 @@
-//on history button press
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -14,7 +13,7 @@ Future<dynamic> updateDemographicDataRequest(yob, gender) async {
     final response = await http.patch(
       Uri.parse('$link/demographics/update-demographic-data'),
       headers: <String, String>{
-        'ngrok-skip-browser-warning': 'true', //BRUH MOMENT
+        'ngrok-skip-browser-warning': 'true',
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -24,7 +23,7 @@ Future<dynamic> updateDemographicDataRequest(yob, gender) async {
     if (response.body.split('"')[3] == 'success') {
       return 'success';
     } else {
-      return response.body.split('"')[3]; //to print the message
+      return response.body.split('"')[3];
     }
   } catch (e) {
     print(e);

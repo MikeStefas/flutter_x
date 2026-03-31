@@ -9,7 +9,7 @@ class DatePicker extends StatefulWidget {
   });
   final Function() filterReports;
   final DateTime? selectedDate;
-  final Function(DateTime) onDateSelected; // 👈 Callback to parent
+  final Function(DateTime) onDateSelected;
 
   @override
   State<DatePicker> createState() => _DatePickerState();
@@ -23,7 +23,6 @@ class _DatePickerState extends State<DatePicker> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2030),
 
-      // Dark mode picker style
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.dark().copyWith(
@@ -41,7 +40,7 @@ class _DatePickerState extends State<DatePicker> {
     );
 
     if (pickedDate != null) {
-      widget.onDateSelected(pickedDate); // 👈 Notify parent
+      widget.onDateSelected(pickedDate);
     }
   }
 

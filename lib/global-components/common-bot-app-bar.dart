@@ -8,9 +8,7 @@ class CommonBotAppBar extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // border line
         Container(height: 2, color: Colors.lightBlueAccent),
-        //
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: BottomAppBar(
@@ -25,7 +23,6 @@ class CommonBotAppBar extends StatelessWidget {
                     size: 30,
                   ),
                   onPressed: () async {
-                    //await loadReports();
                     if (context.mounted) {
                       Navigator.pushNamed(context, '/historypage');
                     }
@@ -49,7 +46,6 @@ class CommonBotAppBar extends StatelessWidget {
                     size: 30,
                   ),
                   onPressed: () async {
-                    //await loadDemographics();
                     Navigator.pushNamed(context, '/demographicDatapage');
                   },
                 ),

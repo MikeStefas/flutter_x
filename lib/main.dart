@@ -8,7 +8,6 @@ import 'package:myapp/pages/demographic-data-page/demographic-data-page.dart';
 import 'package:myapp/actions/tokens-exist.dart';
 
 void main() {
-  // Ensure that plugin services are initialized
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'SmileCheck',
+      title: 'Xerostomia',
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: FutureBuilder<bool>(
         future: tokensExist(),

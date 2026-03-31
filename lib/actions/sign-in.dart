@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/requests/sign-in-store-token.dart';
 
 signIn(String email, String password, BuildContext context) async {
-  //empty fields
   if (email.isEmpty || password.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
@@ -16,7 +15,6 @@ signIn(String email, String password, BuildContext context) async {
     return;
   }
   final dynamic response = await signInRequest(email, password);
-  //errors!
   if (response != null) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -24,7 +22,7 @@ signIn(String email, String password, BuildContext context) async {
         content: Text(response, style: TextStyle(color: Colors.black)),
       ),
     );
-  } //success!
+  } 
   else {
     Navigator.pushNamed(context, '/homepage');
   }

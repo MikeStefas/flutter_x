@@ -26,7 +26,6 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
       appBar: CommonAppBar(),
 
-      //BODY
       body: History(reports: widget.reports, selectedDate: widget.selectedDate),
 
       bottomNavigationBar: CommonBotAppBar(),
@@ -49,16 +48,13 @@ class _HistoryState extends State<History> {
   DateTime? selectedDate;
 
   @override
-  //stat
   void initState() {
     super.initState();
     () async {
-      //fixed bug that would keep user1 reports if u logged in with user2 who has no reports
       setState(() {
         reports = [];
       });
       await _loadReports();
-      //sort by neqest first
       reports.sort((a, b) {
         DateTime dateA = DateTime.parse(a['createdAt']);
         DateTime dateB = DateTime.parse(b['createdAt']);

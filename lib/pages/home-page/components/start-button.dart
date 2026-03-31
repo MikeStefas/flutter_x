@@ -19,9 +19,8 @@ class StartButton extends StatelessWidget {
         onPressed: () async {
           final result = await viewDemographicDataRequest();
           if (result == null) {
-            // Show alert dialog
             NoDemographicsPopup(context);
-            return; // stop execution here
+            return;
           }
           Navigator.pushNamed(context, '/startpage');
         },

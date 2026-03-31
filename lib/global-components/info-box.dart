@@ -24,7 +24,6 @@ class InfoBox extends StatelessWidget {
   }
 }
 
-// CommonBoxDecoration for InfoBox
 var commonBoxDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(10),
   border: Border.all(color: Colors.lightBlueAccent, width: 2),
